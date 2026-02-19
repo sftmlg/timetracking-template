@@ -2,15 +2,28 @@
 
 ## Purpose
 
-This repo tracks developer hours for invoicing. You maintain it as part of your workflow.
+This repo tracks developer hours for invoicing. You maintain it as part of your workflow. Each engagement forks this template and configures `config.md` with the actual projects, categories, and rate.
 
 ## When to Track
 
 Track time after completing work: tickets, meetings, support, setup. Add entries to the current week's KW file.
 
-## How to Track
+## Handling Tracking Commands
 
-1. **Find current week file**: `YYYY-MM/KW{nn}.md` (create if missing)
+When given a command like "Track 1h on this ticket", "Log 0,5h on PROJ-123", or "Add 2h to today":
+
+1. **Hours** — extract the amount (minimum 0,25h; use European comma: `1,5` not `1.5`)
+2. **Project** — determine from ticket key prefix, explicit mention, or current work context. Check `config.md` → Projects table.
+3. **Ticket key** — include in description as `{TICKET-KEY}` (e.g. `PROJ-123`). For ticket work, the ticket key IS the description or its first word.
+4. **Category** — use `TICKET` for issue/ticket work. Check `config.md` → Categories per Project.
+5. **Date** — use today's date (DD.MM.) unless specified otherwise.
+
+After writing the entry, confirm:
+> Tracked: {hours}h → {Project} | {category} | {description} (KW{nn}, {date})
+
+## How to Track (Step by Step)
+
+1. **Find current week file**: `YYYY-MM/KW{nn}.md` (create if missing — see template below)
 2. **Add entry** to the correct project table: date, hours, category, description
 3. **Update Gesamt** row in the project table
 4. **Update Tagesübersicht** at bottom of week file
