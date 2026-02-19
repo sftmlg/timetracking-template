@@ -4,6 +4,21 @@
 
 This repo tracks developer hours for invoicing. You maintain it as part of your workflow. Each engagement forks this template and configures `config.md` with the actual projects, categories, and rate.
 
+## How Forking Works
+
+This repo is a template. For each new engagement:
+
+1. **Fork** `sftmlg/timetracking-template` → new repo named `timetracking-{name}` (e.g. `timetracking-andrei`)
+2. **Configure** `config.md` — replace all `{placeholders}` with actual values: freelancer name, client, rate, projects, categories
+3. **Create first month folder** — `mkdir YYYY-MM` matching the engagement start month
+4. **Start tracking** — create the first `KW{nn}.md` for the current calendar week
+
+### Setup Detection
+
+When you first encounter a freshly forked repo, check `config.md`:
+- If it still contains `{placeholders}` → ask for the missing values before tracking anything
+- If it's filled in → you're ready to track
+
 ## When to Track
 
 Track time after completing work: tickets, meetings, support, setup. Add entries to the current week's KW file.
