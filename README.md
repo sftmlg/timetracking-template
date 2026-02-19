@@ -4,7 +4,7 @@ LLM-friendly developer time tracking. Markdown-based, designed for AI coding age
 
 ## How It Works
 
-Weekly markdown files track hours per project. Monthly summaries aggregate for invoicing. All files follow a strict format so LLMs can parse and update them reliably.
+Weekly markdown files track hours per project. Each project corresponds to a repo or codebase in the engagement. Monthly summaries aggregate for invoicing. All files follow a strict format so LLMs can parse and update them reliably.
 
 ## Structure
 
@@ -12,16 +12,18 @@ Weekly markdown files track hours per project. Monthly summaries aggregate for i
 - `YYYY-MM/SUMMARY.md` — Monthly totals for invoicing
 - `config.md` — Projects, categories, rates, and rules for this engagement
 
+Each week file is divided by **project** (repo/codebase). Within each project section, entries include date, hours, category, and description. Ticket work uses the ticket key as description.
+
 ## Workflow
 
-1. **Track** — Add entry to current week file
+1. **Track** — Add entry to current week file, in the correct project section
 2. **Summarize** — Update monthly SUMMARY.md
 3. **New week** — Create new KW file when calendar week changes
 4. **New month** — Create new YYYY-MM/ folder with fresh SUMMARY.md
 
 ## Week File Format
 
-Each week file contains per-project detail tables and a daily overview.
+Each week file is structured by project, then by day. Ticket numbers appear directly in the description.
 
 ### Per-Project Tables
 
@@ -30,7 +32,7 @@ Each week file contains per-project detail tables and a daily overview.
 
 | Datum | Stunden | Kategorie | Beschreibung |
 |-------|---------|-----------|--------------|
-| 10.02. | 2 | {category} | {description} |
+| 10.02. | 2 | TICKET | PROJ-123 Fix login redirect |
 | **Gesamt** | **2** | | |
 ```
 
@@ -87,6 +89,7 @@ Minimum unit: 0,25h (15 minutes). Use comma as decimal separator (European forma
 - **Frequency**: Track daily (end of workday)
 - **Minimum**: 0,25h per entry
 - **Granularity**: Category + short description per entry
+- **Ticket format**: Use ticket key in description (e.g. `PROJ-123`)
 - **Week boundary**: KW file belongs to the month where Monday of that week falls
 - **Weekend work**: Only with pre-approval (note in description)
 
@@ -99,4 +102,4 @@ Minimum unit: 0,25h (15 minutes). Use comma as decimal separator (European forma
 
 ## For LLM Agents
 
-This repo is designed for Claude Code and similar AI coding assistants. The `.claude/CLAUDE.md` contains instructions for automatic time tracking. When placed as a sibling to project repos, agents can track time as part of their normal workflow.
+This repo is designed for Claude Code and similar AI coding assistants. The `.claude/CLAUDE.md` contains instructions for automatic time tracking, including how to handle commands like "Track 1h on ticket PROJ-123". When placed as a sibling to project repos, agents can track time as part of their normal workflow.
